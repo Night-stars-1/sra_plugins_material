@@ -6,4 +6,4 @@
 
 ## 功能说明
   * 将`sra_plugins_material`放置在StarRailAssistant的`plugins`目录下
-  * 可将识别结果上传到[StarRailStation](https://starrailstation.com/cn/settings#planner用于计算养成
+  * 可将识别结果上传到[StarRailStation](https://starrailstation.com/cn/settings#planner)用于计算养成
