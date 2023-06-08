@@ -2,7 +2,7 @@
 Author: Night-stars-1 nujj1042633805@gmail.com
 Date: 2023-06-08 14:19:52
 LastEditors: Night-stars-1 nujj1042633805@gmail.com
-LastEditTime: 2023-06-08 22:22:16
+LastEditTime: 2023-06-08 23:21:17
 Description: 
 
 Copyright (c) 2023 by Night-stars-1, All Rights Reserved. 
@@ -12,6 +12,7 @@ from . import *
 import time
 import orjson
 
+from get_width import get_width
 from utils.calculated import calculated
 from utils.log import log
 from subprocess import run, DEVNULL
@@ -44,10 +45,11 @@ name2id = {'信用点': '29328', '风雪之角': '67219', '苦寒晶壳': '67220
 
 pos_data = [(9, 19), (16, 20), (22, 20), (29, 20), (35, 19), (41, 20), (48, 19), (55, 19), (61, 20), (9, 33), (16, 33), (22, 32), (28, 33), (35, 33), (42, 33), (49, 32), (55, 33), (61, 32), (10, 46), (16, 45), (21, 45), (29, 45), (35, 45), (42, 44), (48, 45), (54, 45), (61, 45), (9, 59), (15, 59), (22, 59), (29, 59), (37, 59), (41, 59), (48, 59), (54, 60), (60, 59), (10, 73), (16, 73), (22, 74), (29, 73), (35, 73), (42, 73), (49, 73), (56, 74), (62, 74), (9, 84), (16, 83), (22, 83), (29, 83), (36, 83), (42, 83), (48, 84), (54, 83), (62, 83)]
 
-calculated1 = calculated()
-calculated2 = calculated(det_model_name="en_PP-OCRv3_det", rec_model_name="en_PP-OCRv3", number=True)
+calculated1 = None
+calculated2 = None
 
 def open_knapsack():
+    global calculated1
     start_time = time.perf_counter()
     while True:
         calculated1.keyboard.press("b")
@@ -63,6 +65,11 @@ def open_knapsack():
             continue
 
 def main(e=None):
+    global calculated1
+    global calculated2
+    get_width("崩坏：星穹铁道")
+    calculated1 = calculated()
+    calculated2 = calculated(det_model_name="en_PP-OCRv3_det", rec_model_name="en_PP-OCRv3", number=True)
     calculated1.switch_window()
     import pyautogui # 缩放纠正
     open_knapsack()
